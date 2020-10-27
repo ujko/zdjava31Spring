@@ -39,14 +39,16 @@ public class UserDaoInMemImpl implements UserDao {
     }
 
     @Override
-    public void removeUser(User user) {
+    public User removeUser(User user) {
         userMap.remove(user.getUserId());
+        return user;
     }
 
     @Override
-    public void modifyUser(int userId, User user) {
+    public User modifyUser(int userId, User user) {
         user.setUserId(userId);
         userMap.put(userId, user);
+        return user;
     }
 
     private void createUsers() {

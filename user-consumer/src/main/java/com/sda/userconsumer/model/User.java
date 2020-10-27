@@ -1,25 +1,12 @@
-package com.sda.userSda.model;
+package com.sda.userconsumer.model;
 
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 public class User {
     private int userId;
-
-    @Size(min = 2, max = 20, message = "Za krótkie imie")
     private String firstName;
-
-    @Size(min = 2, message = "Za krótkie nazwisko")
-    @Size(max = 20, message = "Za długie nazwisko")
     private String lastName;
-
     private LocalDate birthDate;
-
-    @Pattern(regexp = "[\\d]{4}-[\\d]{2}-[\\d]{2}", message = "Nieprawidłowa data")
-    private String birthDateTemp;
 
     public int getUserId() {
         return userId;
@@ -51,20 +38,6 @@ public class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
-    }
-
-    public String getBirthDateTemp() {
-        return birthDateTemp;
-    }
-
-    public void setBirthDateTemp(String birthDateTemp) {
-        this.birthDateTemp = birthDateTemp;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        try {
-            this.birthDate = LocalDate.parse(birthDateTemp, formatter);
-        }catch (DateTimeParseException e) {
-            //normal when you choose nothing
-        }
     }
 
     @Override

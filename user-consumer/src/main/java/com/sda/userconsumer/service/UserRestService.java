@@ -1,10 +1,10 @@
-package com.sda.userSda.dao;
+package com.sda.userconsumer.service;
 
-import com.sda.userSda.model.User;
+import com.sda.userconsumer.model.User;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserRestService {
     List<User> getAllUsers();
     User getUserById(int userId);
     User addUser(User user);

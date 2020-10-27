@@ -26,13 +26,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void removeUser(User user) {
-        userDao.removeUser(user);
+    public User removeUser(User user) {
+        return userDao.removeUser(user);
     }
 
     @Override
-    public void modifyUser(int userId, User user) {
-        userDao.modifyUser(userId, user);
+    public User modifyUser(int userId, User user) {
+        return userDao.modifyUser(userId, user);
     }
 
     @Override
