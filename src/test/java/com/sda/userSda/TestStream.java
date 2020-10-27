@@ -18,4 +18,22 @@ public class TestStream {
         System.out.println(res);
     }
 
+
+    @Test
+    void test1() {
+        doMethod("text");
+    }
+
+    private void doMethod(String text) {
+        if(text != null) {
+            return;
+        }
+        if(text.length() < 2) {
+            return;
+        }
+            System.out.println(text);
+
+
+    }
+
 }
