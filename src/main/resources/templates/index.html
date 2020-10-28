@@ -17,8 +17,10 @@
                 <td>Imię</td>
                 <td>Nazwisko</td>
                 <td>Data urodzenia</td>
+                <td>Szczegóły</td>
                 <td>Usuwanie</td>
                 <td>Modyfikowanie</td>
+
             </tr>
         </thead>
         <tbody>
@@ -27,6 +29,7 @@
                 <td th:text="${user.firstName}"></td>
                 <td th:text="${user.lastName}"></td>
                 <td th:text="${user.birthDate}"></td>
+                <td><a th:href="${'/thuser/id/' + user.userId}">Szczegóły</a> </td>
                 <td><a th:href="${'/delete/' + user.userId}">Usuń użytkownika</a> </td>
                 <td><a th:href="${'/modify?id=' + user.userId}">Modyfikuj użytkownika</a> </td>
             </tr>

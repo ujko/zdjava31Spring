@@ -1,8 +1,11 @@
 package com.sda.userSda;
 
 import com.sda.userSda.model.User;
+import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,8 +35,13 @@ public class TestStream {
             return;
         }
             System.out.println(text);
-
-
     }
 
+
+    @Test
+    void test2() {
+        LocalDate date = LocalDate.of(1972, 04, 03);
+        Period between = Period.between(date, LocalDate.now());
+        System.out.println(between.getYears());
+    }
 }
