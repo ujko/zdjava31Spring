@@ -1,5 +1,6 @@
 package com.sda.userSda.service;
 
+import com.sda.userSda.dao.UserDaoJdbcImpl;
 import com.sda.userSda.dao.UserDaoSpring;
 import com.sda.userSda.model.User;
 import org.springframework.context.annotation.Profile;
@@ -14,9 +15,11 @@ import java.util.List;
 @Profile("dev")
 public class UserServiceSpringImpl implements UserService {
     private UserDaoSpring userDaoSpring;
+    private UserDaoJdbcImpl userDaoJdbc;
 
-    public UserServiceSpringImpl(UserDaoSpring userDaoSpring) {
+    public UserServiceSpringImpl(UserDaoSpring userDaoSpring, UserDaoJdbcImpl userDaoJdbc) {
         this.userDaoSpring = userDaoSpring;
+        this.userDaoJdbc = userDaoJdbc;
     }
 
     @PostConstruct
@@ -26,8 +29,8 @@ public class UserServiceSpringImpl implements UserService {
 
     @Override
     public List<User> getAll() {
-        System.out.println("Pobieram wszytko klasa UserServiceSpringImpl");
-        return userDaoSpring.findAll();
+        System.out.println("Pobieram jdbc");
+        return userDaoJdbc.getAllUsers();
     }
 
     @Override
@@ -55,12 +58,12 @@ public class UserServiceSpringImpl implements UserService {
 
     @Override
     public List<User> getByFirstName(String firstName) {
-        return userDaoSpring.getAllByFirstName(firstName);
+        return userDaoJdbc.getByFirstName(firstName);
     }
 
     @Override
     public List<User> getByLastName(String lastName) {
-        return userDaoSpring.getAllByLastName(lastName);
+        return userDaoJdbc.getByLastName(lastName);
     }
 
     @Override
@@ -69,8 +72,11 @@ public class UserServiceSpringImpl implements UserService {
     }
 
     @Override
-    public List<User> getByName(String name) {
-        return userDaoSpring.getByAge(name);
+    public List<User> getByAgeBetween(int min, int max) {
+//        LocalDate minDate = LocalDate.now().minusYears(max);
+//        LocalDate maxDate = LocalDate.now().minusYears(min);
+//        return userDaoSpring.getByAge(minDate, maxDate);
+        return userDaoJdbc.getByAgeBetween(min, max);
     }
 
 

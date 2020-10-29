@@ -12,7 +12,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "uzytkownicy")
 @NamedQueries({
-    @NamedQuery(name = "dateBetween", query = "select u from User u where u.firstName = :name")
+    @NamedQuery(name = "dateBetween", query = "select u from User u where u.birthDate >= :minDate and u.birthDate <= :maxDate")
 })
 public class User {
     @Id

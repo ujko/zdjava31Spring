@@ -57,7 +57,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getByName(String name) {
+    public List<User> getByAgeBetween(int minDate, int maxDate) {
         return null;
     }
+
+
 }
