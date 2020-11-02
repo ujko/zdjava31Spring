@@ -3,6 +3,7 @@ package com.sda.userSda;
 import com.sda.userSda.model.User;
 import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -43,5 +44,12 @@ public class TestStream {
         LocalDate date = LocalDate.of(1972, 04, 03);
         Period between = Period.between(date, LocalDate.now());
         System.out.println(between.getYears());
+    }
+
+    @Test
+    void test3() {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        System.out.println(encoder.encode("pawel"));
+        System.out.println(encoder.encode("kasia"));
     }
 }
